@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B5D115C135F91640060A837 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D115B135F91640060A837 /* MenuScene.m */; };
+		3B5D1160135F91900060A837 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D115F135F91900060A837 /* GameScene.m */; };
+		3B5D1163135F91AB0060A837 /* AboutScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D1162135F91AB0060A837 /* AboutScene.m */; };
+		3B5D1166135F91C60060A837 /* HighscoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D1165135F91C60060A837 /* HighscoresScene.m */; };
+		3B5D1182135F93970060A837 /* Snake-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D1173135F93970060A837 /* Snake-hd.plist */; };
+		3B5D1187135F94210060A837 /* Snake-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D1186135F94210060A837 /* Snake-hd.png */; };
 		3BD5DC97135CAEF000086E3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC96135CAEF000086E3C /* QuartzCore.framework */; };
 		3BD5DC99135CAEF000086E3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC98135CAEF000086E3C /* OpenGLES.framework */; };
 		3BD5DC9B135CAEF000086E3C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC9A135CAEF000086E3C /* OpenAL.framework */; };
@@ -127,6 +133,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B5D115A135F91640060A837 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		3B5D115B135F91640060A837 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		3B5D115E135F91900060A837 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		3B5D115F135F91900060A837 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		3B5D1161135F91AB0060A837 /* AboutScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutScene.h; sourceTree = "<group>"; };
+		3B5D1162135F91AB0060A837 /* AboutScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutScene.m; sourceTree = "<group>"; };
+		3B5D1164135F91C60060A837 /* HighscoresScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighscoresScene.h; sourceTree = "<group>"; };
+		3B5D1165135F91C60060A837 /* HighscoresScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighscoresScene.m; sourceTree = "<group>"; };
+		3B5D1173135F93970060A837 /* Snake-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Snake-hd.plist"; sourceTree = "<group>"; };
+		3B5D1186135F94210060A837 /* Snake-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snake-hd.png"; sourceTree = "<group>"; };
 		3BD5DC92135CAEF000086E3C /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD5DC96135CAEF000086E3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BD5DC98135CAEF000086E3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -382,6 +398,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B5D1185135F939E0060A837 /* hd */ = {
+			isa = PBXGroup;
+			children = (
+				3B5D1173135F93970060A837 /* Snake-hd.plist */,
+				3B5D1186135F94210060A837 /* Snake-hd.png */,
+			);
+			name = hd;
+			sourceTree = "<group>";
+		};
 		3BD5DC87135CAEF000086E3C = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +448,14 @@
 				3BD5DDF6135CAEF200086E3C /* RootViewController.m */,
 				3BD5DDF8135CAEF200086E3C /* HelloWorldLayer.h */,
 				3BD5DDF9135CAEF200086E3C /* HelloWorldLayer.m */,
+				3B5D115A135F91640060A837 /* MenuScene.h */,
+				3B5D115B135F91640060A837 /* MenuScene.m */,
+				3B5D115E135F91900060A837 /* GameScene.h */,
+				3B5D115F135F91900060A837 /* GameScene.m */,
+				3B5D1164135F91C60060A837 /* HighscoresScene.h */,
+				3B5D1165135F91C60060A837 /* HighscoresScene.m */,
+				3B5D1161135F91AB0060A837 /* AboutScene.h */,
+				3B5D1162135F91AB0060A837 /* AboutScene.m */,
 				3BD5DDFB135CAEF200086E3C /* GameConfig.h */,
 				3BD5DCA7135CAEF000086E3C /* Resources */,
 				3BD5DCBB135CAEF000086E3C /* cocos2d */,
@@ -438,6 +471,7 @@
 		3BD5DCA7135CAEF000086E3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B5D1185135F939E0060A837 /* hd */,
 				3BD5DCA8135CAEF000086E3C /* Default.png */,
 				3BD5DCAA135CAEF000086E3C /* fps_images.png */,
 				3BD5DCAC135CAEF000086E3C /* Icon-72.png */,
@@ -758,6 +792,8 @@
 				3BD5DCB5135CAEF000086E3C /* Icon.png in Resources */,
 				3BD5DCB7135CAEF000086E3C /* Icon@2x.png in Resources */,
 				3BD5DCBA135CAEF000086E3C /* iTunesArtwork in Resources */,
+				3B5D1182135F93970060A837 /* Snake-hd.plist in Resources */,
+				3B5D1187135F94210060A837 /* Snake-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +904,10 @@
 				3BD5DDF4135CAEF200086E3C /* AppDelegate.m in Sources */,
 				3BD5DDF7135CAEF200086E3C /* RootViewController.m in Sources */,
 				3BD5DDFA135CAEF200086E3C /* HelloWorldLayer.m in Sources */,
+				3B5D115C135F91640060A837 /* MenuScene.m in Sources */,
+				3B5D1160135F91900060A837 /* GameScene.m in Sources */,
+				3B5D1163135F91AB0060A837 /* AboutScene.m in Sources */,
+				3B5D1166135F91C60060A837 /* HighscoresScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +1002,7 @@
 				3BD5DE00135CAEF200086E3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
