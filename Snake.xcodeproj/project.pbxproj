@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3D67251360CA440025219B /* Snake.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D67231360CA440025219B /* Snake.plist */; };
+		3B3D67261360CA440025219B /* Snake.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D67241360CA440025219B /* Snake.png */; };
 		3B5D115C135F91640060A837 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D115B135F91640060A837 /* MenuScene.m */; };
 		3B5D1160135F91900060A837 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D115F135F91900060A837 /* GameScene.m */; };
 		3B5D1163135F91AB0060A837 /* AboutScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D1162135F91AB0060A837 /* AboutScene.m */; };
@@ -133,6 +135,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B3D67231360CA440025219B /* Snake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Snake.plist; sourceTree = "<group>"; };
+		3B3D67241360CA440025219B /* Snake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snake.png; sourceTree = "<group>"; };
 		3B5D115A135F91640060A837 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		3B5D115B135F91640060A837 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		3B5D115E135F91900060A837 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 		3B5D1185135F939E0060A837 /* hd */ = {
 			isa = PBXGroup;
 			children = (
+				3B3D67231360CA440025219B /* Snake.plist */,
+				3B3D67241360CA440025219B /* Snake.png */,
 				3B5D1173135F93970060A837 /* Snake-hd.plist */,
 				3B5D1186135F94210060A837 /* Snake-hd.png */,
 			);
@@ -794,6 +800,8 @@
 				3BD5DCBA135CAEF000086E3C /* iTunesArtwork in Resources */,
 				3B5D1182135F93970060A837 /* Snake-hd.plist in Resources */,
 				3B5D1187135F94210060A837 /* Snake-hd.png in Resources */,
+				3B3D67251360CA440025219B /* Snake.plist in Resources */,
+				3B3D67261360CA440025219B /* Snake.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

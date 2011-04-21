@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CCLayer.h"
+#import "cocos2d.h"
 
 @interface MenuScene : CCLayer {
     
 }
+
++(id) scene;
 
 @end

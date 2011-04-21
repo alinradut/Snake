@@ -7,8 +7,24 @@
 //
 
 #import "GameScene.h"
-#import "CCLayer.h"
+#import "GameConfig.h"
+#import "CCDrawingPrimitives.h"
 
 @implementation GameScene
+
++ (id)scene {
+	CCScene *scene = [CCScene node];
+	GameScene *layer = [GameScene node];
+	[scene addChild:layer];
+	return scene;
+}
+
+- (id)init {
+    if ((self = [super init])) {
+        CCLayerColor *backgroundLayer = [CCLayerColor layerWithColor:kGameBackgroundColor];
+        [self addChild:backgroundLayer];
+    }
+    return self;
+}
 
 @end

@@ -24,5 +24,6 @@
 //
 #define GAME_AUTOROTATION kGameAutorotationUIViewController
 
+#define kGameBackgroundColor ccc4(174, 206, 139, 255)
 
 #endif // __GAME_CONFIG_H
