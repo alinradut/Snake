@@ -10,9 +10,18 @@
 #import "cocos2d.h"
 
 @interface GameScene : CCLayer {
+    CCLabelTTF *scoreLabel_;
+    CCLabelTTF *scoreLabelShadow_;
+    CCLabelTTF *levelLabel_;
+    CCLabelTTF *levelLabelShadow_;
+    NSInteger score_;
+    NSInteger level_;
     
 }
 
 + (id)scene;
+
+@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) NSInteger level;
 
 @end

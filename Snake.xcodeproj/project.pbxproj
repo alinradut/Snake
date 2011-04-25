@@ -15,6 +15,7 @@
 		3B5D1166135F91C60060A837 /* HighscoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D1165135F91C60060A837 /* HighscoresScene.m */; };
 		3B5D1182135F93970060A837 /* Snake-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D1173135F93970060A837 /* Snake-hd.plist */; };
 		3B5D1187135F94210060A837 /* Snake-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D1186135F94210060A837 /* Snake-hd.png */; };
+		3B7BC9E4136616E1008A3447 /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BC9E3136616E1008A3447 /* Krungthep.ttf */; };
 		3BD5DC97135CAEF000086E3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC96135CAEF000086E3C /* QuartzCore.framework */; };
 		3BD5DC99135CAEF000086E3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC98135CAEF000086E3C /* OpenGLES.framework */; };
 		3BD5DC9B135CAEF000086E3C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5DC9A135CAEF000086E3C /* OpenAL.framework */; };
@@ -147,6 +148,7 @@
 		3B5D1165135F91C60060A837 /* HighscoresScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighscoresScene.m; sourceTree = "<group>"; };
 		3B5D1173135F93970060A837 /* Snake-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Snake-hd.plist"; sourceTree = "<group>"; };
 		3B5D1186135F94210060A837 /* Snake-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snake-hd.png"; sourceTree = "<group>"; };
+		3B7BC9E3136616E1008A3447 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
 		3BD5DC92135CAEF000086E3C /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD5DC96135CAEF000086E3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BD5DC98135CAEF000086E3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -477,6 +479,7 @@
 		3BD5DCA7135CAEF000086E3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B7BC9E3136616E1008A3447 /* Krungthep.ttf */,
 				3B5D1185135F939E0060A837 /* hd */,
 				3BD5DCA8135CAEF000086E3C /* Default.png */,
 				3BD5DCAA135CAEF000086E3C /* fps_images.png */,
@@ -802,6 +805,7 @@
 				3B5D1187135F94210060A837 /* Snake-hd.png in Resources */,
 				3B3D67251360CA440025219B /* Snake.plist in Resources */,
 				3B3D67261360CA440025219B /* Snake.png in Resources */,
+				3B7BC9E4136616E1008A3447 /* Krungthep.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

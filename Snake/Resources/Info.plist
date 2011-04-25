@@ -52,5 +52,9 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Krungthep.ttf</string>
+	</array>
 </dict>
 </plist>
