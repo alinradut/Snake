@@ -10,6 +10,11 @@
 #import "GameConfig.h"
 #import "CCDrawingPrimitives.h"
 
+#define MAX_COLS    25
+#define MAX_ROWS    25
+#define MAX_SPEED   10
+#define BASE_SPEED  0.7
+
 void ccDrawFilledRect( CGPoint v1, CGPoint v2 )
 {
 	CGPoint poli[]={v1,CGPointMake(v1.x,v2.y),v2,CGPointMake(v2.x,v1.y)};
@@ -18,6 +23,13 @@ void ccDrawFilledRect( CGPoint v1, CGPoint v2 )
 	ccDrawLine(poli[1], poli[2]);
 	ccDrawLine(poli[2], poli[3]);
 	ccDrawLine(poli[3], poli[0]);
+}
+
+SnakePiece MakeSnakePiece(NSInteger x, NSInteger y) {
+    SnakePiece piece;
+    piece.x = x;
+    piece.y = y;
+    return piece;
 }
 
 @implementation GameScene
@@ -48,6 +60,8 @@ void ccDrawFilledRect( CGPoint v1, CGPoint v2 )
         
         [self setScore:0];
         [self setLevel:1];
+        
+        [self scheduleUpdate];
     }
     return self;
 }
@@ -94,16 +108,62 @@ void ccDrawFilledRect( CGPoint v1, CGPoint v2 )
     }
     [levelLabelShadow_ setString:[NSString stringWithFormat:@"Level %d", level_]];
     [levelLabel_ setString:[NSString stringWithFormat:@"Level %d", level_]];
+    
+    // max 20 pieces
+    snake_[0] = MakeSnakePiece(2,1);
+    snake_[1] = MakeSnakePiece(1,1);
+    snake_[2] = MakeSnakePiece(0,1);
 }
 
--(void) draw
-{
+- (void)step {
+    for (int i = snakePieces_ - 1; i > 0; i--) {
+        snake_[i] = snake_[i-1];
+    }
+    switch (direction_) {
+        case UP:
+            snake_[0].y++;
+            break;
+        case RIGHT:
+            snake_[0].x++;
+            break;
+        case DOWN:
+            snake_[0].y--;
+            break;
+        case LEFT:
+            snake_[0].x--;
+            break;
+        default:
+            break;
+    }
+    if (snake_[0].x < 0 
+        || snake_[0].x > MAX_COLS 
+        || snake_[0].y < 0 
+        || snake_[0].y > MAX_ROWS) {
+        // game over
+    }
+}
+
+- (void)update:(ccTime)time {
+    accumulator += time;
+    float speedStep = BASE_SPEED - BASE_SPEED/MAX_SPEED * currentSpeed_;
+    while (accumulator >= speedStep) {
+        [self step];
+        accumulator -= speedStep;
+    }
+}
+
+-(void) draw {
 	CGSize s = [[CCDirector sharedDirector] winSize];
 	
 	glDisable(GL_LINE_SMOOTH);
 	glLineWidth( 1.0f );
 	glColor4ub(0,0,0,255);
-	ccDrawFilledRect(ccp(455, 278), ccp(28, 32));
+	ccDrawFilledRect(ccp(s.width - 26, s.height - 42), ccp(28, 32));
+    
+    NSInteger existingSprites = [snakeSprites_ count];
+    for (int i = 0; i < snakePieces_; i++) {
+        //if ()
+    }
 }
 
 @end
