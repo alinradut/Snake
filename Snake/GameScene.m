@@ -10,14 +10,28 @@
 #import "GameConfig.h"
 #import "CCDrawingPrimitives.h"
 
-#define MAX_COLS    25
-#define MAX_ROWS    25
+#define MAX_COLS    20
+#define MAX_ROWS    12
 #define MAX_SPEED   10
-#define BASE_SPEED  0.7
+#define BASE_SPEED  0.2
 
 void ccDrawFilledRect( CGPoint v1, CGPoint v2 )
 {
 	CGPoint poli[]={v1,CGPointMake(v1.x,v2.y),v2,CGPointMake(v2.x,v1.y)};
+    
+	ccDrawLine(poli[0], poli[1]);
+	ccDrawLine(poli[1], poli[2]);
+	ccDrawLine(poli[2], poli[3]);
+	ccDrawLine(poli[3], poli[0]);
+}
+
+void ccDrawFilledCGRect( CGRect rect )
+{
+	CGPoint poli[]=
+        {rect.origin,
+        CGPointMake(rect.origin.x,rect.origin.y + rect.size.height),
+        CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height),
+        CGPointMake(rect.origin.x + rect.size.width,rect.origin.y)};
     
 	ccDrawLine(poli[0], poli[1]);
 	ccDrawLine(poli[1], poli[2]);
@@ -49,6 +63,8 @@ SnakePiece MakeSnakePiece(NSInteger x, NSInteger y) {
         // we need to add the background layer to a Z index of -1 in order to be able to draw primitives
         // in the draw method. The primitives are [apparently] always drawn at Z index 0
         [self addChild:backgroundLayer z:-1];
+        self.isTouchEnabled = YES;
+        gameAreaRect_ = CGRectMake(29, 38, 422, 242);
         
         CCMenuItem *pauseButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithSpriteFrameName:@"btn-pause-off.png"] 
                                                           selectedSprite:[CCSprite spriteWithSpriteFrameName:@"btn-pause-on.png"] 
@@ -58,16 +74,23 @@ SnakePiece MakeSnakePiece(NSInteger x, NSInteger y) {
         menu.position = ccp(400.0f, 17.0f);
         [self addChild:menu];
         
+        snakeSprites_ = [[NSMutableArray alloc] init];
+        
         [self setScore:0];
         [self setLevel:1];
         
         [self scheduleUpdate];
+        gameState_ = GameStateRunning;
     }
     return self;
 }
 
 - (void)pauseBtnTapped:(CCMenuItem *)sender {
     
+}
+
+- (void)setUpFoodPieces {
+    [foodSprites_ removeAllObjects];
 }
 
 - (void)setScore:(NSInteger)score {
@@ -113,56 +136,121 @@ SnakePiece MakeSnakePiece(NSInteger x, NSInteger y) {
     snake_[0] = MakeSnakePiece(2,1);
     snake_[1] = MakeSnakePiece(1,1);
     snake_[2] = MakeSnakePiece(0,1);
+    snake_[3] = MakeSnakePiece(0,2);
+    snake_[4] = MakeSnakePiece(0,3);
+    snake_[5] = MakeSnakePiece(0,4);
+    snakePieces_ = 6;
 }
 
 - (void)step {
-    for (int i = snakePieces_ - 1; i > 0; i--) {
-        snake_[i] = snake_[i-1];
-    }
+    NSLog(@"STEP: %d", gameState_);
+    direction_ = nextDirection_;
+    SnakePiece tmp = snake_[0];
     switch (direction_) {
         case UP:
-            snake_[0].y++;
+            tmp.y++;
             break;
         case RIGHT:
-            snake_[0].x++;
+            tmp.x++;
             break;
         case DOWN:
-            snake_[0].y--;
+            tmp.y--;
             break;
         case LEFT:
-            snake_[0].x--;
+            tmp.x--;
             break;
         default:
             break;
     }
-    if (snake_[0].x < 0 
-        || snake_[0].x > MAX_COLS 
-        || snake_[0].y < 0 
-        || snake_[0].y > MAX_ROWS) {
-        // game over
+    if (tmp.x < 0 
+        || tmp.x > MAX_COLS 
+        || tmp.y < 0 
+        || tmp.y > MAX_ROWS) {
+        gameState_ = GameStateGameOver;
+        NSLog(@"GAME OVER");
+    }
+    else {
+        SnakePiece lastPiece = snake_[snakePieces_-1];
+        for (int i = snakePieces_ - 1; i > 0; i--) {
+            snake_[i] = snake_[i-1];
+        }
+        snake_[0] = tmp;
+        for (CCSprite *foodPiece in foodSprites_) {
+            if (foodPiece.tag % 100 == snake_[0].x 
+                && foodPiece.tag / 100 == snake_[0].y) {
+                snake_[snakePieces_] = lastPiece;
+                snakePieces_++;
+            }
+        }
     }
 }
 
 - (void)update:(ccTime)time {
-    accumulator += time;
-    float speedStep = BASE_SPEED - BASE_SPEED/MAX_SPEED * currentSpeed_;
-    while (accumulator >= speedStep) {
-        [self step];
-        accumulator -= speedStep;
+    if (gameState_ == GameStateRunning) {
+        accumulator += time;
+        float speedStep = BASE_SPEED - BASE_SPEED/MAX_SPEED * currentSpeed_;
+        while (accumulator >= speedStep) {
+            [self step];
+            accumulator -= speedStep;
+        }
     }
 }
 
+- (CCSprite *)snakeSpriteAtIndex:(NSInteger)index {
+    NSAssert(index <= [snakeSprites_ count], @"Oopsiee");
+    if ([snakeSprites_ count] == index) {
+        CCSprite *sprite = nil;
+        if (index == 0) {
+            sprite = [CCSprite spriteWithSpriteFrameName:@"snake-head.png"];
+        }
+        else {
+            sprite = [CCSprite spriteWithSpriteFrameName:@"snake-body.png"];
+        }
+        [snakeSprites_ addObject:sprite];
+    }
+    return [snakeSprites_ objectAtIndex:index];
+}
+
 -(void) draw {
-	CGSize s = [[CCDirector sharedDirector] winSize];
-	
 	glDisable(GL_LINE_SMOOTH);
 	glLineWidth( 1.0f );
 	glColor4ub(0,0,0,255);
-	ccDrawFilledRect(ccp(s.width - 26, s.height - 42), ccp(28, 32));
-    
-    NSInteger existingSprites = [snakeSprites_ count];
+	ccDrawFilledCGRect(gameAreaRect_);
+
     for (int i = 0; i < snakePieces_; i++) {
-        //if ()
+        CCSprite *sprite = [self snakeSpriteAtIndex:i];
+        
+        sprite.position = CGPointMake(38 + snake_[i].x * 20, 29 + snake_[i].y * 20);
+        if (i == 0) {
+            sprite.rotation = direction_ * 90;
+        }
+        if (![sprite parent]) {
+            [self addChild:sprite];
+        }
+    }
+}
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint p = [self convertTouchToNodeSpace:touch];
+
+    if (CGRectContainsPoint(gameAreaRect_, p)) {
+        if (direction_ == UP || direction_ == DOWN) {
+            if (p.x - 29 > gameAreaRect_.size.width / 2) {
+                nextDirection_ = RIGHT;
+            }
+            else {
+                nextDirection_ = LEFT;
+            }
+        }
+        else {
+            if (p.y - 38 > gameAreaRect_.size.height / 2) {
+                nextDirection_ = UP;
+            }
+            else {
+                nextDirection_ = DOWN;
+            }
+        }
     }
 }
 

@@ -10,16 +10,23 @@
 #import "cocos2d.h"
 
 typedef enum {
-    UP,
     RIGHT,
     DOWN,
-    LEFT
+    LEFT,
+    UP
 } Direction;
 
 typedef struct {
     NSInteger x;
     NSInteger y;
 } SnakePiece;
+
+typedef enum {
+    GameStateNotStarted,
+    GameStateRunning,
+    GameStateGameOver,
+    GameStatePaused,
+} GameState;
 
 @interface GameScene : CCLayer {
     CCLabelTTF *scoreLabel_;
@@ -28,11 +35,18 @@ typedef struct {
     CCLabelTTF *levelLabelShadow_;
     NSInteger score_;
     NSInteger level_;
+    GameState gameState_;
 
+    CGRect gameAreaRect_;
+    CCNode *gameArea_;
     SnakePiece snake_[20];
     NSMutableArray *snakeSprites_;
     NSInteger snakePieces_;
+    
+    NSMutableArray *foodSprites_;
+
     Direction direction_;
+    Direction nextDirection_;
     NSInteger currentSpeed_;
     float accumulator;
 }
