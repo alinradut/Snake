@@ -25,6 +25,7 @@ typedef enum {
     GameStateNotStarted,
     GameStateRunning,
     GameStateGameOver,
+    GameStateLevelOver,
     GameStatePaused,
 } GameState;
 
@@ -39,11 +40,14 @@ typedef enum {
 
     CGRect gameAreaRect_;
     CCNode *gameArea_;
+    
+    NSArray *levels_;
     SnakePiece snake_[20];
     NSMutableArray *snakeSprites_;
     NSInteger snakePieces_;
     
-    NSMutableArray *foodSprites_;
+    CCSprite *foodSprite_;
+    NSInteger remainingFoodPieces_;
 
     Direction direction_;
     Direction nextDirection_;
